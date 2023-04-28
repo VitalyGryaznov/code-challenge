@@ -1,6 +1,6 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import { linkStyles } from "../utils/linkStyles";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { linkStyles } from '../utils/linkStyles';
 
 interface TitleItem {
   title: string;
@@ -26,12 +26,12 @@ export const Navbar: React.FC<MovieAppNavbarConfig> = ({ items }) => {
       <Link
         style={{
           ...linkStyles,
-          color: "#fff",
-          fontSize: "30px",
-          fontWeight: "bold",
+          color: '#fff',
+          fontSize: '30px',
+          fontWeight: 'bold'
         }}
         to="/movie"
-      >
+        key="title">
         {title.title}
       </Link>
     );
@@ -42,12 +42,12 @@ export const Navbar: React.FC<MovieAppNavbarConfig> = ({ items }) => {
       <Link
         style={{
           ...linkStyles,
-          color: "#fff",
-          fontWeight: "bold",
-          marginRight: "1rem",
+          color: '#fff',
+          fontWeight: 'bold',
+          marginRight: '1rem'
         }}
         to={item.to}
-      >
+        key="label">
         {item.label}
       </Link>
     );
@@ -55,17 +55,17 @@ export const Navbar: React.FC<MovieAppNavbarConfig> = ({ items }) => {
 
   const renderSearchItem = (item: SearchItem) => {
     return (
-      <div style={{ color: "white" }} onClick={item.onClick}>
+      <div style={{ color: 'white', cursor: 'pointer' }} onClick={item.onClick} key="search">
         {item.icon}
       </div>
     );
   };
 
   return (
-    <div style={{ display: "flex", justifyContent: "space-between" }}>
-      <div style={{ display: "flex" }}>
+    <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+      <div style={{ display: 'flex' }}>
         {items.map((item) => {
-          if ("title" in item) {
+          if ('title' in item) {
             return renderTitle(item);
           }
           return null;
@@ -73,16 +73,15 @@ export const Navbar: React.FC<MovieAppNavbarConfig> = ({ items }) => {
       </div>
       <div
         style={{
-          display: "flex",
-          alignItems: "center",
-          alignContent: "center",
-        }}
-      >
+          display: 'flex',
+          alignItems: 'center',
+          alignContent: 'center'
+        }}>
         {items.map((item) => {
-          if ("label" in item) {
+          if ('label' in item) {
             return renderLink(item);
           }
-          if ("icon" in item) {
+          if ('icon' in item) {
             return renderSearchItem(item);
           }
           return null;

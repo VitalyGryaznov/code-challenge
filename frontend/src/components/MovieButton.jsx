@@ -1,10 +1,10 @@
-import React from "react";
+import React from 'react';
 
 class MovieButton extends React.Component {
   state = { isClicked: false };
 
   handleClick = (e) => {
-    if (this.state.clicked) return;
+    if (this.state.isClicked) return;
 
     e.preventDefault();
     this.setState({ isClicked: true }, () => {
@@ -20,13 +20,13 @@ class MovieButton extends React.Component {
     let clickedStyles;
     if (this.props.primary) {
       styles = {
-        color: "white",
-        background: "#0532FF",
+        color: 'white',
+        background: '#0532FF'
       };
     }
     if (this.state.isClicked) {
       clickedStyles = {
-        opacity: "0.6",
+        opacity: '0.6'
       };
     }
 
@@ -36,19 +36,18 @@ class MovieButton extends React.Component {
         {...this.props}
         onClick={this.handleClick}
         style={{
-          margin: "1rem",
-          padding: "0.5rem",
-          minWidth: "80px",
-          borderRadius: "4px",
-          display: "inline-block",
-          textAlign: "center",
-          textTransform: "uppercase",
-          fontWeight: "bold",
-          background: "#cdcdcd",
+          margin: '1rem',
+          padding: '0.5rem',
+          minWidth: '80px',
+          borderRadius: '4px',
+          display: 'inline-block',
+          textAlign: 'center',
+          textTransform: 'uppercase',
+          fontWeight: 'bold',
+          background: '#cdcdcd',
           ...styles,
-          ...clickedStyles,
-        }}
-      >
+          ...clickedStyles
+        }}>
         {this.props.label}
       </div>
     );
