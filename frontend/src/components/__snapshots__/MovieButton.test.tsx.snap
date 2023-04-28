@@ -1,6 +1,6 @@
 // Vitest Snapshot v1
 
-exports[`Card > renders 1`] = `
+exports[`MovieButton > renders 1`] = `
 <div>
   <div
     label="label"

@@ -1,31 +1,22 @@
-import { TextField } from "@mui/material";
-import React, { useEffect } from "react";
+import { TextField } from '@mui/material';
+import React from 'react';
 
-export const Filter = ({ onChange }: any) => {
-  const [from, setFrom] = React.useState<Date>();
-  const [to, setTo] = React.useState<Date>();
+type PropType = {
+  startDateValue: string;
+  endDateValue: string;
+  onStartChange: React.ChangeEventHandler<HTMLInputElement>;
+  onEndChange: React.ChangeEventHandler<HTMLInputElement>;
+};
 
-  useEffect(() => {
-    onChange(from, to);
-  }, [from, to]);
-
+export const Filter = ({ startDateValue, endDateValue, onStartChange, onEndChange }: PropType) => {
   return (
     <div
       style={{
-        display: "grid",
-        gridTemplateColumns: "1fr 1fr",
-      }}
-    >
-      <TextField
-        value={from}
-        onChange={(e) => setFrom(new Date(e.target.value))}
-        type={"date"}
-      />
-      <TextField
-        value={to}
-        onChange={(e) => setTo(new Date(e.target.value))}
-        type={"date"}
-      />
+        display: 'grid',
+        gridTemplateColumns: '1fr 1fr'
+      }}>
+      <TextField value={startDateValue} onChange={onStartChange} type={'date'} />
+      <TextField value={endDateValue} onChange={onEndChange} type={'date'} />
     </div>
   );
 };

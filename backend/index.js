@@ -22,7 +22,7 @@ app.get('/movie', (_request, response) => {
     return response.json(movieList)
 })
 app.post('/movie', (request, response) => {
-    movieList = movieList + request.body
+    movieList.push(request.body);
     return response.json("Movie added successfully")
 })
 app.get('/movie/:id', (request, response) => {

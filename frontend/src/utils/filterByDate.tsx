@@ -1,15 +1,19 @@
-import { Movie } from "../components/MovieDetails";
+import { MovieType } from '../types';
 
-export const filterByDate = (movies: Movie[], from: Date, to: Date): any[] => {
+export const filterByDate = (
+  movies: MovieType[],
+  filterStartDate: string,
+  filterEndDate: string
+): any[] => {
   if (!movies) return [];
-  if (!from && !to) return movies;
+  if (!filterStartDate && !filterEndDate) return movies;
 
-  return movies.filter((i) => {
+  return movies.filter((movie) => {
     return (
-      from &&
-      from > new Date(i.releaseDate) &&
-      to &&
-      to < new Date(i.releaseDate)
+      (!filterStartDate ||
+        new Date(filterStartDate) <= new Date(movie.releaseDate.split('-').reverse().join('-'))) &&
+      (!filterEndDate ||
+        new Date(filterEndDate) >= new Date(movie.releaseDate.split('-').reverse().join('-')))
     );
   });
 };
